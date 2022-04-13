@@ -5,8 +5,6 @@
 //  Created by Doug on 4/12/22.
 //
 
-import Foundation
-
-struct RouteTest {
-    let x = 10
+public struct RouteTest {
+    public let x = 10
 }
