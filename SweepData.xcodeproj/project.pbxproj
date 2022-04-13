@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		914A511B280693F8009951D7 /* SweepData.h in Headers */ = {isa = PBXBuildFile; fileRef = 914A511A280693F8009951D7 /* SweepData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		914A51222806941A009951D7 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914A51212806941A009951D7 /* Route.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		914A5117280693F8009951D7 /* SweepData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SweepData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		914A511A280693F8009951D7 /* SweepData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SweepData.h; sourceTree = "<group>"; };
+		914A51212806941A009951D7 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +48,7 @@
 			isa = PBXGroup;
 			children = (
 				914A511A280693F8009951D7 /* SweepData.h */,
+				914A51212806941A009951D7 /* Route.swift */,
 			);
 			path = SweepData;
 			sourceTree = "<group>";
@@ -93,6 +96,7 @@
 				TargetAttributes = {
 					914A5116280693F8009951D7 = {
 						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
 					};
 				};
 			};
@@ -129,6 +133,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				914A51222806941A009951D7 /* Route.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +264,7 @@
 		914A511F280693F8009951D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -280,6 +286,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -287,6 +294,7 @@
 		914A5120280693F8009951D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
