@@ -7,4 +7,6 @@
 
 public struct RouteTest {
     public let x = 10
+    
+    public init() { }
 }
