@@ -2,11 +2,7 @@
 //  Route.swift
 //  SweepData
 //
-//  Created by Doug on 4/12/22.
+//  Created by Doug on 6/20/19.
+//  Copyright © 2019 Doug. All rights reserved.
 //
 
-public struct RouteTest {
-    public let x = 10
-    
-    public init() { }
-}

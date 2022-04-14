@@ -7,11 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		91254B6E280783F200044A7C /* BinaryCodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91254B6A280783F200044A7C /* BinaryCodableExtensions.swift */; };
+		91254B6F280783F200044A7C /* BinaryCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91254B6B280783F200044A7C /* BinaryCodable.swift */; };
+		91254B70280783F200044A7C /* BinaryEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91254B6C280783F200044A7C /* BinaryEncoder.swift */; };
+		91254B71280783F200044A7C /* BinaryDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91254B6D280783F200044A7C /* BinaryDecoder.swift */; };
+		91254B732807EA0800044A7C /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91254B722807EA0800044A7C /* Types.swift */; };
+		91254B752807EE1100044A7C /* MeterTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91254B742807EE1100044A7C /* MeterTypes.swift */; };
+		91254B772808166A00044A7C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 91254B762808166900044A7C /* LICENSE */; };
 		914A517928074C0A009951D7 /* SweepData.h in Headers */ = {isa = PBXBuildFile; fileRef = 914A517828074C0A009951D7 /* SweepData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		914A518228074EA1009951D7 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914A518128074EA1009951D7 /* Route.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		91254B6A280783F200044A7C /* BinaryCodableExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryCodableExtensions.swift; sourceTree = "<group>"; };
+		91254B6B280783F200044A7C /* BinaryCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryCodable.swift; sourceTree = "<group>"; };
+		91254B6C280783F200044A7C /* BinaryEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryEncoder.swift; sourceTree = "<group>"; };
+		91254B6D280783F200044A7C /* BinaryDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryDecoder.swift; sourceTree = "<group>"; };
+		91254B722807EA0800044A7C /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		91254B742807EE1100044A7C /* MeterTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterTypes.swift; sourceTree = "<group>"; };
+		91254B762808166900044A7C /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		914A517528074C0A009951D7 /* SweepData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SweepData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		914A517828074C0A009951D7 /* SweepData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SweepData.h; sourceTree = "<group>"; };
 		914A518128074EA1009951D7 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
@@ -28,6 +42,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		91254B69280783F200044A7C /* BinaryCodable */ = {
+			isa = PBXGroup;
+			children = (
+				91254B6A280783F200044A7C /* BinaryCodableExtensions.swift */,
+				91254B6B280783F200044A7C /* BinaryCodable.swift */,
+				91254B6C280783F200044A7C /* BinaryEncoder.swift */,
+				91254B6D280783F200044A7C /* BinaryDecoder.swift */,
+				91254B762808166900044A7C /* LICENSE */,
+			);
+			path = BinaryCodable;
+			sourceTree = "<group>";
+		};
 		914A516B28074C0A009951D7 = {
 			isa = PBXGroup;
 			children = (
@@ -48,7 +74,10 @@
 			isa = PBXGroup;
 			children = (
 				914A517828074C0A009951D7 /* SweepData.h */,
+				91254B69280783F200044A7C /* BinaryCodable */,
 				914A518128074EA1009951D7 /* Route.swift */,
+				91254B722807EA0800044A7C /* Types.swift */,
+				91254B742807EE1100044A7C /* MeterTypes.swift */,
 			);
 			path = SweepData;
 			sourceTree = "<group>";
@@ -123,6 +152,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91254B772808166A00044A7C /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +164,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				914A518228074EA1009951D7 /* Route.swift in Sources */,
+				91254B71280783F200044A7C /* BinaryDecoder.swift in Sources */,
+				91254B6F280783F200044A7C /* BinaryCodable.swift in Sources */,
+				91254B732807EA0800044A7C /* Types.swift in Sources */,
+				91254B6E280783F200044A7C /* BinaryCodableExtensions.swift in Sources */,
+				91254B752807EE1100044A7C /* MeterTypes.swift in Sources */,
+				91254B70280783F200044A7C /* BinaryEncoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
