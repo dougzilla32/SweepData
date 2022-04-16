@@ -373,7 +373,7 @@ extension Substring {
     }
 }
 
-public enum RestrictionType: Int, BinaryCodable {
+public enum RestrictionType: Int, BinaryCodable, Equatable {
     case towAway, sweep
 
     public static let MinValue = RestrictionType.towAway
