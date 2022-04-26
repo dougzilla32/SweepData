@@ -132,3 +132,127 @@ open class Route: BinaryCodable {
         return "\(streetName): left \(left_fromAddress) to \(left_toAddress), right \(right_fromAddress) to \(right_toAddress) ; \(rightLeft)"
     }
 }
+
+public class MapRoute: Route {
+    public let blockSide: CompassDirection
+    public let originalPath: [LatitudeLongitude]
+    public var snappedPath: [LatitudeLongitude]
+    public var offsetPolygonPath: [LatitudeLongitude]
+
+    // Debugging
+    public var offsetExtend: [LLSegment]
+    public var minLineExtend: [LLSegment]
+
+    // X-Y coordinates, adjusting for longitude distance
+    public var snappedPathXY: [Point]
+    public var offsetPathXY: [Point]
+    public var offsetPolygonPathXY: [Point]
+    public var offsetExtendXY: [Segment]
+    public var minLineExtendXY: [Segment]
+     
+    public init(
+        cnn: Int,
+        rightLeft: RightLeft,
+        streetName: String,
+        neighborhood: String,
+        left_fromAddress: Int,
+        left_toAddress: Int,
+        right_fromAddress: Int,
+        right_toAddress: Int,
+        zipCode: Int,
+        parkingSupplyOnBlock: Int,
+        when: [MapWhen],
+        offsetPath: [LatitudeLongitude],
+         
+        blockSide: CompassDirection,
+        originalPath: [LatitudeLongitude],
+        snappedPath: [LatitudeLongitude],
+        offsetPolygonPath: [LatitudeLongitude],
+        offsetExtend: [LLSegment],
+        minLineExtend: [LLSegment],
+        snappedPathXY: [Point],
+        offsetPathXY: [Point],
+        offsetPolygonPathXY: [Point],
+        offsetExtendXY: [Segment],
+        minLineExtendXY: [Segment]
+    ) {
+        self.blockSide = blockSide
+        self.originalPath = originalPath
+        self.snappedPath = snappedPath
+        self.offsetPolygonPath = offsetPolygonPath
+        self.offsetExtend = offsetExtend
+        self.minLineExtend = minLineExtend
+        self.snappedPathXY = snappedPathXY
+        self.offsetPathXY = offsetPathXY
+        self.offsetPolygonPathXY = offsetPolygonPathXY
+        self.offsetExtendXY = offsetExtendXY
+        self.minLineExtendXY = minLineExtendXY
+
+        super.init(
+            cnn: cnn,
+            rightLeft: rightLeft,
+            streetName: streetName,
+            neighborhood: neighborhood,
+            left_fromAddress: left_fromAddress,
+            left_toAddress: left_toAddress,
+            right_fromAddress: right_fromAddress,
+            right_toAddress: right_toAddress,
+            zipCode: zipCode,
+            parkingSupplyOnBlock: parkingSupplyOnBlock,
+            when: when,
+            offsetPath: offsetPath)
+    }
+
+    public required init(from decoder: Decoder) throws {
+        blockSide = .north
+        originalPath = []
+        snappedPath = []
+        offsetPolygonPath = []
+        offsetExtend = []
+        minLineExtend = []
+        snappedPathXY = []
+        offsetPathXY = []
+        offsetPolygonPathXY = []
+        offsetExtendXY = []
+        minLineExtendXY = []
+
+        try super.init(from: decoder)
+    }
+
+    public class MapWhen: Route.When {
+        public let row: Int
+
+        public init(
+            type: RestrictionType,
+            fromHour: Int,
+            toHour: Int,
+            holidays: Bool,
+            week1: Bool,
+            week2: Bool,
+            week3: Bool,
+            week4: Bool,
+            week5: Bool,
+            day: Day,
+            row: Int
+        ) {
+            self.row = row
+
+            super.init(
+                type: type,
+                fromHour: fromHour,
+                toHour: toHour,
+                holidays: holidays,
+                week1: week1,
+                week2: week2,
+                week3: week3,
+                week4: week4,
+                week5: week5,
+                day: day)
+        }
+        
+        public required init(from decoder: Decoder) throws {
+            self.row = 0
+            try super.init(from: decoder)
+        }
+    }
+}
