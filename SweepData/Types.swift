@@ -112,7 +112,7 @@ public enum Day: Int, BinaryCodable, Comparable {
     
     public static let dataSFValues = [ "Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat", "Holiday" ]
     
-    public static let abbrevStringValues = [ "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "H" ]
+    public static let abbrevStringValues = [ "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Ho" ]
 
     public static func < (lhs: Day, rhs: Day) -> Bool {
         return lhs.rawValue < rhs.rawValue
