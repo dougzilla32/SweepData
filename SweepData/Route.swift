@@ -20,7 +20,7 @@ public struct RouteData: BinaryCodable {
     }
 }
 
-open class Route: BinaryCodable {
+open class Route: BinaryCodable, Hashable {
     public let cnn: Int
     public let rightLeft: RightLeft
     public let streetName: String
@@ -128,8 +128,44 @@ open class Route: BinaryCodable {
         }
     }
 
+    public func hash(into hasher: inout Hasher) {
+        cnn.hash(into: &hasher)
+        rightLeft.hash(into: &hasher)
+        streetName.hash(into: &hasher)
+        neighborhood.hash(into: &hasher)
+        left_fromAddress.hash(into: &hasher)
+        left_toAddress.hash(into: &hasher)
+        right_fromAddress.hash(into: &hasher)
+        right_toAddress.hash(into: &hasher)
+        zipCode.hash(into: &hasher)
+        meters.hash(into: &hasher)
+        parkingSupplyOnBlock.hash(into: &hasher)
+        
+        when.hash(into: &hasher)
+    }
+    
+    public static func == (lhs: Route, rhs: Route) -> Bool {
+        return lhs.cnn == rhs.cnn
+            && lhs.rightLeft == rhs.rightLeft
+            && lhs.streetName == rhs.streetName
+            && lhs.neighborhood == rhs.neighborhood
+            && lhs.left_fromAddress == rhs.left_fromAddress
+            && lhs.left_toAddress == rhs.left_toAddress
+            && lhs.right_fromAddress == rhs.right_fromAddress
+            && lhs.right_toAddress == rhs.right_toAddress
+            && lhs.zipCode == rhs.zipCode
+            && lhs.meters == rhs.meters
+            && lhs.parkingSupplyOnBlock == rhs.parkingSupplyOnBlock
+
+            && lhs.when == rhs.when
+    }
+
     public var shortName: String {
         return "\(streetName): left \(left_fromAddress) to \(left_toAddress), right \(right_fromAddress) to \(right_toAddress) ; \(rightLeft)"
+    }
+
+    public var summary: String {
+        return "\(cnn) \(rightLeft) \(streetName) \(left_fromAddress) \(left_toAddress) \(right_fromAddress) \(right_toAddress) \(zipCode) \(meters)"
     }
 }
 
