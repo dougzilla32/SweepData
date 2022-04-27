@@ -30,7 +30,7 @@ open class Route: BinaryCodable {
     public let right_fromAddress: Int
     public let right_toAddress: Int
     public let zipCode: Int
-    public var meters: Meters?
+    public var meters: Meters
     public let parkingSupplyOnBlock: Int
     public let when: [When]
     public var offsetPath: [LatitudeLongitude]
@@ -58,7 +58,7 @@ open class Route: BinaryCodable {
         self.right_fromAddress = right_fromAddress
         self.right_toAddress = right_toAddress
         self.zipCode = zipCode
-        self.meters = nil
+        self.meters = Meters(weekdays: nil, saturday: nil, sunday: nil, totalCount: 0)
         self.parkingSupplyOnBlock = parkingSupplyOnBlock
         self.when = when
         self.offsetPath = offsetPath
