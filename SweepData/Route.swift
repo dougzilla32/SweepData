@@ -6,20 +6,6 @@
 //  Copyright © 2019 Doug. All rights reserved.
 //
 
-public struct RouteData: BinaryCodable {
-    public let version: String
-    public let date: Date
-    public let routes: [Route]
-    public let boundingBox: BoundingBox
-
-    public init(version: String, date: Date, routes: [Route], boundingBox: BoundingBox) {
-        self.version = version
-        self.date = date
-        self.routes = routes
-        self.boundingBox = boundingBox
-    }
-}
-
 open class Route: BinaryCodable, Hashable {
     public let cnn: Int
     public let rightLeft: RightLeft
