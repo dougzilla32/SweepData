@@ -114,6 +114,8 @@ public enum Day: Int, BinaryCodable, Comparable {
     
     public static let abbrevStringValues = [ "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Ho" ]
 
+    public static let superAbbrevStringValues = [ "Su", "M", "Tu", "W", "Th", "F", "Sa", "H" ]
+
     public static func < (lhs: Day, rhs: Day) -> Bool {
         return lhs.rawValue < rhs.rawValue
     }
@@ -137,6 +139,27 @@ public enum Day: Int, BinaryCodable, Comparable {
         self.init(rawValue: index + 1)
     }
     
+    public init?(superAbbrevString: String) {
+        guard let index = Day.superAbbrevStringValues.firstIndex(of: superAbbrevString) else { return nil }
+        self.init(rawValue: index + 1)
+    }
+    
+    public init?(superAbbrevStringAnyCase: String) {
+        guard superAbbrevStringAnyCase.count <= 2 else { return nil }
+        
+        var dayString = superAbbrevStringAnyCase
+        var normalizedDayString = ""
+        
+        let first = dayString.removeFirst()
+        normalizedDayString.append(first.uppercased())
+        if dayString.count > 0 {
+            let second = dayString.removeFirst()
+            normalizedDayString.append(second.lowercased())
+        }
+        
+        self.init(superAbbrevString: normalizedDayString)
+    }
+    
     public var fullStringValue: String {
         return Day.fullStringValues[rawValue - 1]
     }
@@ -151,6 +174,51 @@ public enum Day: Int, BinaryCodable, Comparable {
 
     public var abbrevStringValue: String {
         return Day.abbrevStringValues[rawValue - 1]
+    }
+
+    public var superAbbrevStringValue: String {
+        return Day.superAbbrevStringValues[rawValue - 1]
+    }
+}
+
+extension Array where Element == Day {
+    // Returns a string with one the following formats, for example:
+    //      Su
+    //      M,Th
+    //      M-F
+    //      M-Sa
+    //      M,W,Th,F,Sa
+    public var superAbbrevStringValue: String {
+        var s = ""
+        let contiguous: Bool
+
+        let days = self.sorted()
+        if days.count >= 3 {
+            var prev = -1
+            var cont = true
+            for d in days {
+                if prev != -1 && prev != d.rawValue - 1 {
+                    cont = false
+                    break
+                }
+                prev = d.rawValue
+            }
+            contiguous = cont
+        } else {
+            contiguous = false
+        }
+        
+        if contiguous {
+            s = "\(days.first!.superAbbrevStringValue)-\(days.last!.superAbbrevStringValue)"
+        } else {
+            for d in days {
+                if s.count > 0 {
+                    s.append(",")
+                }
+                s.append(d.superAbbrevStringValue)
+            }
+        }
+        return s
     }
 }
 
@@ -374,10 +442,10 @@ extension Substring {
 }
 
 public enum RestrictionType: Int, BinaryCodable, Equatable {
-    case towAway, sweep
+    case towAway, sweep, timeLimit
 
     public static let MinValue = RestrictionType.towAway
-    public static let MaxValue = RestrictionType.sweep
+    public static let MaxValue = RestrictionType.timeLimit
 }
 
 public struct LatitudeLongitude: BinaryCodable, Hashable {
