@@ -85,7 +85,7 @@ public enum CompassDirection: Int, BinaryCodable {
 }
 
 public enum Day: Int, BinaryCodable, Comparable {
-    case sun = 1, mon, tue, wed, thu, fri, sat, holiday
+    case mon = 1, tue, wed, thu, fri, sat, sun, holiday
     
     public var isWeekend: Bool {
         switch self {
@@ -105,16 +105,16 @@ public enum Day: Int, BinaryCodable, Comparable {
         }
     }
 
-    public static let fullStringValues = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
-                                    "Friday", "Saturday", "Holiday" ]
+    public static let fullStringValues = [ "Monday", "Tuesday", "Wednesday", "Thursday",
+                                    "Friday", "Saturday", "Sunday", "Holiday" ]
 
-    public static let shortStringValues = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Holiday" ]
+    public static let shortStringValues = [ "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun", "Holiday" ]
     
-    public static let dataSFValues = [ "Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat", "Holiday" ]
+    public static let dataSFValues = [ "Mon", "Tues", "Wed", "Thu", "Fri", "Sat", "Sun", "Holiday" ]
     
-    public static let abbrevStringValues = [ "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Ho" ]
+    public static let abbrevStringValues = [ "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su", "Ho" ]
 
-    public static let superAbbrevStringValues = [ "Su", "M", "Tu", "W", "Th", "F", "Sa", "H" ]
+    public static let superAbbrevStringValues = [ "M", "Tu", "W", "Th", "F", "Sa", "Su", "H" ]
 
     public static func < (lhs: Day, rhs: Day) -> Bool {
         return lhs.rawValue < rhs.rawValue
@@ -187,6 +187,7 @@ extension Array where Element == Day {
     //      M,Th
     //      M-F
     //      M-Sa
+    //      M-Su
     //      M,W,Th,F,Sa
     public var superAbbrevStringValue: String {
         var s = ""
@@ -223,18 +224,18 @@ extension Array where Element == Day {
 }
 
 public enum DayOrEvent: Int, BinaryCodable, Comparable {
-    case sun = 1, mon, tues, wed, thu, fri, sat,
+    case mon = 1, tues, wed, thu, fri, sat, sun,
     giantsDay, giantsNight, postedEvents, postedServices, schoolDays, businessHours, performance
 
-    public static let stringValues = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat",
+    public static let stringValues = [ "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun",
                                 "Giants Day", "Giants Night", "Posted Events", "Posted Services",
                                 "School Days", "Business Hours", "Performance" ]
     
-    public static let dataSFValues = [ "Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat",
+    public static let dataSFValues = [ "Mon", "Tues", "Wed", "Thu", "Fri", "Sat", "Sun",
                                 "Giants Day", "Giants Night", "Posted Events", "Posted Services",
                                 "School Days", "Business Hours", "Performance" ]
     
-    public static let abbrevStringValues = [ "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa",
+    public static let abbrevStringValues = [ "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su",
                                       "Giants Day", "Giants Night", "Posted Events", "Posted Services",
                                       "School Days", "Business Hours", "Performance" ]
     
@@ -431,6 +432,35 @@ public struct HourAndMinute: BinaryCodable, Hashable, Comparable {
     }
 }
 
+extension Int {
+    public var hour: HourAndMinute {
+        let hour: Int
+        if self == 24 {
+            hour = 0
+        } else {
+            hour = self
+        }
+        
+        guard 0..<24 ~= hour else { fatalError() }
+        
+        return HourAndMinute(hour: hour, minute: 0)
+    }
+
+    public var hourAndMinute: HourAndMinute {
+        let hour: Int
+        if self == 2400 {
+            hour = 0
+        } else {
+            hour = self / 100
+        }
+        let minute = self % 100
+        
+        guard 0..<24 ~= hour, 0..<60 ~= minute else { fatalError() }
+        
+        return HourAndMinute(hour: hour, minute: hour)
+    }
+}
+
 extension Substring {
     public var trimmingTrailingSpace: Substring {
         var s = self
@@ -439,13 +469,6 @@ extension Substring {
         }
         return s
     }
-}
-
-public enum RestrictionType: Int, BinaryCodable, Equatable {
-    case towAway, sweep, timeLimit
-
-    public static let MinValue = RestrictionType.towAway
-    public static let MaxValue = RestrictionType.timeLimit
 }
 
 public struct LatitudeLongitude: BinaryCodable, Hashable {
