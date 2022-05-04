@@ -16,9 +16,9 @@ open class Route: BinaryCodable, Hashable {
     public let right_fromAddress: Int
     public let right_toAddress: Int
     public let zipCode: Int
-    public let sweep: [SweepSchedule]?
-    public let towAway: [TowAwaySchedule]?
-    public let timeLimit: [TimeLimitSchedule]?
+    public let sweep: [SweepSchedule]
+    public let towAway: [TowAwaySchedule]
+    public let timeLimit: [TimeLimitSchedule]
     public var meters: Meters?
     public let parkingSupplyOnBlock: Int
     public var offsetPath: [LatitudeLongitude]
@@ -33,9 +33,9 @@ open class Route: BinaryCodable, Hashable {
         right_fromAddress: Int,
         right_toAddress: Int,
         zipCode: Int,
-        sweep: [SweepSchedule]?,
-        towAway: [TowAwaySchedule]?,
-        timeLimit: [TimeLimitSchedule]?,
+        sweep: [SweepSchedule],
+        towAway: [TowAwaySchedule],
+        timeLimit: [TimeLimitSchedule],
         meters: Meters?,
         parkingSupplyOnBlock: Int,
         offsetPath: [LatitudeLongitude]
@@ -119,8 +119,32 @@ open class Route: BinaryCodable, Hashable {
             super.init(row: row, fromTime: fromTime, toTime: toTime, day: day)
         }
         
+        enum CodingKeys: CodingKey {
+            case holidays, week1, week2, week3, week4, week5
+        }
+
+        override public func encode(to encoder: Encoder) throws {
+            var values = encoder.container(keyedBy: CodingKeys.self)
+            try values.encode(holidays, forKey: .holidays)
+            try values.encode(week1, forKey: .week1)
+            try values.encode(week2, forKey: .week2)
+            try values.encode(week3, forKey: .week3)
+            try values.encode(week4, forKey: .week4)
+            try values.encode(week5, forKey: .week5)
+
+            try super.encode(to: encoder)
+        }
+
         required public init(from decoder: Decoder) throws {
-            fatalError("init(from: decoder: Decoder) has not been implemented")
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            holidays = try values.decode(Bool.self, forKey: .holidays)
+            week1 = try values.decode(Bool.self, forKey: .week1)
+            week2 = try values.decode(Bool.self, forKey: .week2)
+            week3 = try values.decode(Bool.self, forKey: .week3)
+            week4 = try values.decode(Bool.self, forKey: .week4)
+            week5 = try values.decode(Bool.self, forKey: .week5)
+
+            try super.init(from: decoder)
         }
 
         public static func == (lhs: Route.SweepSchedule, rhs: Route.SweepSchedule) -> Bool {
@@ -158,8 +182,22 @@ open class Route: BinaryCodable, Hashable {
             super.init(row: row, fromTime: fromTime, toTime: toTime, day: day)
         }
 
+        enum CodingKeys: CodingKey {
+            case row, fromTime, toTime, day, holidays
+        }
+
+        override public func encode(to encoder: Encoder) throws {
+            var values = encoder.container(keyedBy: CodingKeys.self)
+            try values.encode(holidays, forKey: .holidays)
+
+            try super.encode(to: encoder)
+        }
+
         required public init(from decoder: Decoder) throws {
-            fatalError("init(from: decoder: Decoder) has not been implemented")
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            holidays = try values.decode(Bool.self, forKey: .holidays)
+
+            try super.init(from: decoder)
         }
 
         public static func == (lhs: Route.TowAwaySchedule, rhs: Route.TowAwaySchedule) -> Bool {
@@ -187,8 +225,22 @@ open class Route: BinaryCodable, Hashable {
             super.init(row: row, fromTime: fromTime, toTime: toTime, day: day)
         }
         
+        enum CodingKeys: CodingKey {
+            case timeLimit
+        }
+
+        override public func encode(to encoder: Encoder) throws {
+            var values = encoder.container(keyedBy: CodingKeys.self)
+            try values.encode(timeLimit, forKey: .timeLimit)
+
+            try super.encode(to: encoder)
+        }
+
         required public init(from decoder: Decoder) throws {
-            fatalError("init(from: decoder: Decoder) has not been implemented")
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            timeLimit = try values.decode(HourAndMinute.self, forKey: .timeLimit)
+
+            try super.init(from: decoder)
         }
 
         public static func == (lhs: Route.TimeLimitSchedule, rhs: Route.TimeLimitSchedule) -> Bool {
@@ -272,9 +324,9 @@ public class MapRoute: Route {
         right_fromAddress: Int,
         right_toAddress: Int,
         zipCode: Int,
-        sweep: [SweepSchedule]?,
-        towAway: [TowAwaySchedule]?,
-        timeLimit: [TimeLimitSchedule]?,
+        sweep: [SweepSchedule],
+        towAway: [TowAwaySchedule],
+        timeLimit: [TimeLimitSchedule],
         meters: Meters?,
         parkingSupplyOnBlock: Int,
         offsetPath: [LatitudeLongitude],
@@ -321,7 +373,42 @@ public class MapRoute: Route {
             offsetPath: offsetPath)
     }
 
-    public required init(from decoder: Decoder) throws {
-        fatalError("init(from: decoder: Decoder) has not been implemented")
+    enum CodingKeys: CodingKey {
+        case blockSide, originalPath, snappedPath, offsetPolygonPath, offsetExtend, minLineExtend,
+             snappedPathXY, offsetPathXY, offsetPolygonPathXY, offsetExtendXY, minLineExtendXY
+    }
+    
+    override public func encode(to encoder: Encoder) throws {
+        var values = encoder.container(keyedBy: CodingKeys.self)
+        try values.encode(blockSide, forKey: .blockSide)
+        try values.encode(originalPath, forKey: .originalPath)
+        try values.encode(snappedPath, forKey: .snappedPath)
+        try values.encode(offsetPolygonPath, forKey: .offsetPolygonPath)
+        try values.encode(offsetExtend, forKey: .offsetExtend)
+        try values.encode(minLineExtend, forKey: .minLineExtend)
+        try values.encode(snappedPathXY, forKey: .snappedPathXY)
+        try values.encode(offsetPathXY, forKey: .offsetPathXY)
+        try values.encode(offsetPolygonPathXY, forKey: .offsetPolygonPathXY)
+        try values.encode(offsetExtendXY, forKey: .offsetExtendXY)
+        try values.encode(minLineExtendXY, forKey: .minLineExtendXY)
+        
+        try super.encode(to: encoder)
+    }
+
+    required public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        blockSide = try values.decode(CompassDirection.self, forKey: .blockSide)
+        originalPath = try values.decode([LatitudeLongitude].self, forKey: .originalPath)
+        snappedPath = try values.decode([LatitudeLongitude].self, forKey: .snappedPath)
+        offsetPolygonPath = try values.decode([LatitudeLongitude].self, forKey: .offsetPolygonPath)
+        offsetExtend = try values.decode([LLSegment].self, forKey: .offsetExtend)
+        minLineExtend = try values.decode([LLSegment].self, forKey: .minLineExtend)
+        snappedPathXY = try values.decode([Point].self, forKey: .snappedPathXY)
+        offsetPathXY = try values.decode([Point].self, forKey: .offsetPathXY)
+        offsetPolygonPathXY = try values.decode([Point].self, forKey: .offsetPolygonPathXY)
+        offsetExtendXY = try values.decode([Segment].self, forKey: .offsetExtendXY)
+        minLineExtendXY = try values.decode([Segment].self, forKey: .minLineExtendXY)
+
+        try super.init(from: decoder)
     }
 }
