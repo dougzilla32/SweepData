@@ -8,10 +8,10 @@
 public protocol LLPath {
     var row: Int { get }
     var days: [Day] { get }
-    var hoursBegin: HourAndMinute? { get }
-    var hoursEnd: HourAndMinute? { get }
-    var timeLimit: HourAndMinute? { get }
+    var hoursBegin: HourAndMinute { get }
+    var hoursEnd: HourAndMinute { get }
+    var timeLimit: HourAndMinute { get }
     var streetName: String { get }
-    var streetNum: Int? { get }
+    var streetNum: Int { get }
     var path: [LatitudeLongitude] { get }
 }

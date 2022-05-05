@@ -9,15 +9,46 @@
 import Foundation
 
 public struct Meters: BinaryCodable, Hashable {
-    public let weekdays: MeterStats?
-    public let saturday: MeterStats?
-    public let sunday: MeterStats?
+    private let weekdaysStats: [MeterStats]
+    private let saturdayStats: [MeterStats]
+    private let sundayStats: [MeterStats]
     public let totalCount: Int
     
+    var weekdays: MeterStats? {
+        return weekdaysStats[safe: 0]
+    }
+    
+    var saturday: MeterStats? {
+        return saturdayStats[safe: 0]
+    }
+    
+    var sunday: MeterStats? {
+        return sundayStats[safe: 0]
+    }
+    
+    public init() {
+        self.weekdaysStats = []
+        self.saturdayStats = []
+        self.sundayStats = []
+        self.totalCount = 0
+    }
+    
     public init(weekdays: MeterStats?, saturday: MeterStats?, sunday: MeterStats?, totalCount: Int) {
-        self.weekdays = weekdays
-        self.saturday = saturday
-        self.sunday = sunday
+        if let weekdays = weekdays {
+            self.weekdaysStats = [weekdays]
+        } else {
+            self.weekdaysStats = []
+        }
+        if let saturday = saturday {
+            self.saturdayStats = [saturday]
+        } else {
+            self.saturdayStats = []
+        }
+        if let sunday = sunday {
+            self.sundayStats = [sunday]
+        } else {
+            self.sundayStats = []
+        }
         self.totalCount = totalCount
     }
     
@@ -25,7 +56,7 @@ public struct Meters: BinaryCodable, Hashable {
         let startDay, endDay: Day
         if weekdays != nil {
             startDay = .mon
-            endDay = sunday != nil ? .sun : (saturday != nil) ? .sat : .fri
+            endDay = (sunday != nil) ? .sun : (saturday != nil) ? .sat : .fri
         } else if saturday != nil {
             startDay = .sat
             endDay = (sunday != nil) ? .sun : .sat

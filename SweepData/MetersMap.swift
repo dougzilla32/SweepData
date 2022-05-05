@@ -11,15 +11,15 @@ public struct MeterPath: LLPath, BinaryCodable {
     public let parkingSpaceID: Int
     public let smartMeterFlag: String
     public let capColor: MeterCapColor
-    public let streetID: Int?
+    public let streetID: Int
     public let streetName: String
-    public let streetNum: Int?
+    public let streetNum: Int
     public let days: [Day]
-    public let hoursBegin: HourAndMinute?
-    public let hoursEnd: HourAndMinute?
+    public let hoursBegin: HourAndMinute
+    public let hoursEnd: HourAndMinute
     public let scheduleType: String
-    public let hourlyRate: Decimal?
-    public let timeLimit: HourAndMinute?
-    public let orientation: Int?
+    public let hourlyRate: Decimal
+    public let timeLimit: HourAndMinute
+    public let orientation: Int
     public let path: [LatitudeLongitude]
 }

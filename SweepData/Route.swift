@@ -19,7 +19,7 @@ open class Route: BinaryCodable, Hashable {
     public let sweep: [SweepSchedule]
     public let towAway: [TowAwaySchedule]
     public let timeLimit: [TimeLimitSchedule]
-    public var meters: Meters?
+    public var meters: Meters
     public let parkingSupplyOnBlock: Int
     public var offsetPath: [LatitudeLongitude]
 
@@ -36,7 +36,7 @@ open class Route: BinaryCodable, Hashable {
         sweep: [SweepSchedule],
         towAway: [TowAwaySchedule],
         timeLimit: [TimeLimitSchedule],
-        meters: Meters?,
+        meters: Meters,
         parkingSupplyOnBlock: Int,
         offsetPath: [LatitudeLongitude]
     ) {
@@ -293,7 +293,7 @@ open class Route: BinaryCodable, Hashable {
     }
 
     public var summary: String {
-        return "\(cnn) \(rightLeft) \(streetName) \(left_fromAddress) \(left_toAddress) \(right_fromAddress) \(right_toAddress) \(zipCode) \(meters != nil ? meters!.description : "")"
+        return "\(cnn) \(rightLeft) \(streetName) \(left_fromAddress) \(left_toAddress) \(right_fromAddress) \(right_toAddress) \(zipCode) \(meters)"
     }
 }
 
@@ -327,7 +327,7 @@ public class MapRoute: Route {
         sweep: [SweepSchedule],
         towAway: [TowAwaySchedule],
         timeLimit: [TimeLimitSchedule],
-        meters: Meters?,
+        meters: Meters,
         parkingSupplyOnBlock: Int,
         offsetPath: [LatitudeLongitude],
          
