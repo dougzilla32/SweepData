@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9112C1BB28231F1D0043A5C0 /* ParkingRegulationsMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112C1BA28231F1D0043A5C0 /* ParkingRegulationsMap.swift */; };
+		9112C1C1282335250043A5C0 /* MetersMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112C1C0282335250043A5C0 /* MetersMap.swift */; };
 		91254B6E280783F200044A7C /* BinaryCodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91254B6A280783F200044A7C /* BinaryCodableExtensions.swift */; };
 		91254B6F280783F200044A7C /* BinaryCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91254B6B280783F200044A7C /* BinaryCodable.swift */; };
 		91254B70280783F200044A7C /* BinaryEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91254B6C280783F200044A7C /* BinaryEncoder.swift */; };
@@ -17,10 +18,12 @@
 		91254B772808166A00044A7C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 91254B762808166900044A7C /* LICENSE */; };
 		914A517928074C0A009951D7 /* SweepData.h in Headers */ = {isa = PBXBuildFile; fileRef = 914A517828074C0A009951D7 /* SweepData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		914A518228074EA1009951D7 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914A518128074EA1009951D7 /* Route.swift */; };
+		91874AFF2823D25A006BBEE1 /* LLPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91874AFE2823D25A006BBEE1 /* LLPath.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9112C1BA28231F1D0043A5C0 /* ParkingRegulationsMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingRegulationsMap.swift; sourceTree = "<group>"; };
+		9112C1C0282335250043A5C0 /* MetersMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetersMap.swift; sourceTree = "<group>"; };
 		91254B6A280783F200044A7C /* BinaryCodableExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryCodableExtensions.swift; sourceTree = "<group>"; };
 		91254B6B280783F200044A7C /* BinaryCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryCodable.swift; sourceTree = "<group>"; };
 		91254B6C280783F200044A7C /* BinaryEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryEncoder.swift; sourceTree = "<group>"; };
@@ -31,6 +34,7 @@
 		914A517528074C0A009951D7 /* SweepData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SweepData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		914A517828074C0A009951D7 /* SweepData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SweepData.h; sourceTree = "<group>"; };
 		914A518128074EA1009951D7 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		91874AFE2823D25A006BBEE1 /* LLPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLPath.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +82,9 @@
 				914A517828074C0A009951D7 /* SweepData.h */,
 				91254B69280783F200044A7C /* BinaryCodable */,
 				914A518128074EA1009951D7 /* Route.swift */,
+				91874AFE2823D25A006BBEE1 /* LLPath.swift */,
 				9112C1BA28231F1D0043A5C0 /* ParkingRegulationsMap.swift */,
+				9112C1C0282335250043A5C0 /* MetersMap.swift */,
 				91254B722807EA0800044A7C /* Types.swift */,
 				91254B742807EE1100044A7C /* MeterTypes.swift */,
 			);
@@ -167,10 +173,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				914A518228074EA1009951D7 /* Route.swift in Sources */,
+				9112C1C1282335250043A5C0 /* MetersMap.swift in Sources */,
 				91254B71280783F200044A7C /* BinaryDecoder.swift in Sources */,
 				91254B6F280783F200044A7C /* BinaryCodable.swift in Sources */,
 				91254B732807EA0800044A7C /* Types.swift in Sources */,
 				91254B6E280783F200044A7C /* BinaryCodableExtensions.swift in Sources */,
+				91874AFF2823D25A006BBEE1 /* LLPath.swift in Sources */,
 				9112C1BB28231F1D0043A5C0 /* ParkingRegulationsMap.swift in Sources */,
 				91254B752807EE1100044A7C /* MeterTypes.swift in Sources */,
 				91254B70280783F200044A7C /* BinaryEncoder.swift in Sources */,
