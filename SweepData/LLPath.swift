@@ -7,7 +7,7 @@
 
 public protocol LLPath {
     var row: Int { get }
-    var days: [Day]? { get }
+    var days: [Day] { get }
     var hoursBegin: HourAndMinute? { get }
     var hoursEnd: HourAndMinute? { get }
     var timeLimit: HourAndMinute? { get }

@@ -20,7 +20,7 @@ public struct ParkingRegulationsMap: BinaryCodable {
 public struct ParkingRegulationPath: LLPath, BinaryCodable {
     public let row: Int
     public let regulation: String
-    public let days: [Day]?
+    public let days: [Day]
     public let hours: String
     public let hoursBegin: HourAndMinute?
     public let hoursEnd: HourAndMinute?
@@ -41,7 +41,7 @@ public struct ParkingRegulationPath: LLPath, BinaryCodable {
     public let zipCode: Int?
     public let path: [LatitudeLongitude]
     
-    public init(row: Int, regulation: String, days: [Day]?, hours: String, hoursBegin: HourAndMinute?, hoursEnd: HourAndMinute?, regulationDetails: String, timeLimit: HourAndMinute?, exceptions: String, fromTime: String, toTime: String, shapePath: [LatitudeLongitude], cnnRightLeft: RightLeft?, left_fromAddress: Int?, left_toAddress: Int?, right_fromAddress: Int?, right_toAddress: Int?, streetName: String, streetNum: Int?, zipCode: Int?, path: [LatitudeLongitude]) {
+    public init(row: Int, regulation: String, days: [Day], hours: String, hoursBegin: HourAndMinute?, hoursEnd: HourAndMinute?, regulationDetails: String, timeLimit: HourAndMinute?, exceptions: String, fromTime: String, toTime: String, shapePath: [LatitudeLongitude], cnnRightLeft: RightLeft?, left_fromAddress: Int?, left_toAddress: Int?, right_fromAddress: Int?, right_toAddress: Int?, streetName: String, streetNum: Int?, zipCode: Int?, path: [LatitudeLongitude]) {
         self.row = row
         self.regulation = regulation
         self.days = days

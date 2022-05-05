@@ -14,7 +14,7 @@ public struct MeterPath: LLPath, BinaryCodable {
     public let streetID: Int?
     public let streetName: String
     public let streetNum: Int?
-    public let days: [Day]?
+    public let days: [Day]
     public let hoursBegin: HourAndMinute?
     public let hoursEnd: HourAndMinute?
     public let scheduleType: String
