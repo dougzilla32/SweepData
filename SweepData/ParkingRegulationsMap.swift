@@ -7,12 +7,12 @@
 
 public struct ParkingRegulationsMap: BinaryCodable {
     public let date: Date
-    public let segments: [ParkingRegulationPath]
+    public let paths: [ParkingRegulationPath]
     public let boundingBox: BoundingBox
     
-    public init(date: Date, segments: [ParkingRegulationPath], boundingBox: BoundingBox) {
+    public init(date: Date, paths: [ParkingRegulationPath], boundingBox: BoundingBox) {
         self.date = date
-        self.segments = segments
+        self.paths = paths
         self.boundingBox = boundingBox
     }
 }
