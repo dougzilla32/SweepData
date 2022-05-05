@@ -14,15 +14,15 @@ public struct Meters: BinaryCodable, Hashable {
     private let sundayStats: [MeterStats]
     public let totalCount: Int
     
-    var weekdays: MeterStats? {
+    public var weekdays: MeterStats? {
         return weekdaysStats[safe: 0]
     }
     
-    var saturday: MeterStats? {
+    public var saturday: MeterStats? {
         return saturdayStats[safe: 0]
     }
     
-    var sunday: MeterStats? {
+    public var sunday: MeterStats? {
         return sundayStats[safe: 0]
     }
     
