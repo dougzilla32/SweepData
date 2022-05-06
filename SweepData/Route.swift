@@ -43,9 +43,9 @@ open class Route: BinaryCodable, Hashable {
     public let sweep: [SweepSchedule]
     public let towAway: [TowAwaySchedule]
     public let timeLimit: [TimeLimitSchedule]
-    public var meters: Meters
+    public let meters: Meters
     public let parkingSupplyOnBlock: Int
-    public var offsetPath: [LatitudeLongitude]
+    public let offsetPath: [LatitudeLongitude]
 
     public init(
         cnn: Int,
@@ -324,19 +324,19 @@ open class Route: BinaryCodable, Hashable {
 public class MapRoute: Route {
     public let blockSide: CompassDirection
     public let originalPath: [LatitudeLongitude]
-    public var snappedPath: [LatitudeLongitude]
-    public var offsetPolygonPath: [LatitudeLongitude]
+    public let snappedPath: [LatitudeLongitude]
+    public let offsetPolygonPath: [LatitudeLongitude]
 
     // Debugging
-    public var offsetExtend: [LLSegment]
-    public var minLineExtend: [LLSegment]
+    public let offsetExtend: [LLSegment]
+    public let minLineExtend: [LLSegment]
 
     // X-Y coordinates, adjusting for longitude distance
-    public var snappedPathXY: [Point]
-    public var offsetPathXY: [Point]
-    public var offsetPolygonPathXY: [Point]
-    public var offsetExtendXY: [Segment]
-    public var minLineExtendXY: [Segment]
+    public let snappedPathXY: [Point]
+    public let offsetPathXY: [Point]
+    public let offsetPolygonPathXY: [Point]
+    public let offsetExtendXY: [Segment]
+    public let minLineExtendXY: [Segment]
      
     public init(
         cnn: Int,
