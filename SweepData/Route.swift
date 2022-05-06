@@ -6,6 +6,30 @@
 //  Copyright © 2019 Doug. All rights reserved.
 //
 
+open class BroadPhaseGrid<T> {
+    public var grid: [[[T]]]
+    public var size: Int
+    public var sizeD: Double
+    public var box: BoundingBox
+    
+    public init(size: Int, box: BoundingBox) {
+        self.grid = Array(repeating: Array(repeating: [T](), count: size), count: size)
+        self.size = size
+        self.sizeD = Double(size)
+        self.box = box
+    }
+
+    // Return a square of grid tiles that overlap the given bounding box
+    public func intersectionOf(boundingBox: BoundingBox) -> (minX: Int, minY: Int, maxX: Int, maxY: Int) {
+        let OverlapOffset = 0.000000000000001
+        return (
+            minX: Int((boundingBox.minX - box.minX) * sizeD / (box.maxX - box.minX)),
+            minY: Int((boundingBox.minY - box.minY) * sizeD / (box.maxY - box.minY)),
+            maxX: Int((boundingBox.maxX - box.minX - OverlapOffset) * sizeD / (box.maxX - box.minX)) + 1,
+            maxY: Int((boundingBox.maxY - box.minY - OverlapOffset) * sizeD / (box.maxY - box.minY)) + 1)
+    }
+}
+
 open class Route: BinaryCodable, Hashable {
     public let cnn: Int
     public let rightLeft: RightLeft

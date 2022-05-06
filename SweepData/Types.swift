@@ -577,6 +577,10 @@ public struct BoundingBox: BinaryCodable, Hashable {
         return !(other.maxX < minX || other.minX > maxX || other.maxY < minY || other.minY > maxY)
     }
 
+    public func intersects(_ other: BoundingBox, withPadding pad: Double) -> Bool {
+        return !((other.maxX+pad) < (minX-pad) || (other.minX-pad) > (maxX+pad) || (other.maxY+pad) < (minY-pad) || (other.minY-pad) > (maxY+pad))
+    }
+
     public static func pad(bbox: inout BoundingBox, padding: Double) {
         bbox.minX -= padding
         bbox.minY -= padding

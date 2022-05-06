@@ -6,8 +6,6 @@
 //  Copyright © 2019 Doug. All rights reserved.
 //
 
-import UIKit
-
 public class ClosestDistance {
     /* Distance from a point (p1) to line l1 l2 */
     public static func distanceFromPoint(_ p: LatitudeLongitude, toLineSegment l1: LatitudeLongitude, and l2: LatitudeLongitude) -> (distance: Double, point: LatitudeLongitude) {
@@ -37,5 +35,26 @@ public class ClosestDistance {
         let dy = p.y - yy
 
         return (distance: sqrt(dx * dx + dy * dy), point: LatitudeLongitude(x: xx, y: yy))
+    }
+    
+    public static func distance(from: [LatitudeLongitude], to: [LatitudeLongitude]) -> [Double] {
+        guard to.count > 1 else { return [] }
+        
+        var distances = [Double]()
+        for point in from {
+            var minDistance: Double?
+            for i in 0..<(to.count-1) {
+                let p1 = to[i]
+                let p2 = to[i+1]
+                if p1 != p2 {
+                    let distanceAndPoint = ClosestDistance.distanceFromPoint(point, toLineSegment: p1, and: p2)
+                    minDistance = min(minDistance ?? Double.infinity, distanceAndPoint.distance)
+                }
+            }
+            if let d = minDistance {
+                distances.append(d)
+            }
+        }
+        return distances
     }
 }
