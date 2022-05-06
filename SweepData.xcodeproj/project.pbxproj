@@ -19,6 +19,7 @@
 		914A517928074C0A009951D7 /* SweepData.h in Headers */ = {isa = PBXBuildFile; fileRef = 914A517828074C0A009951D7 /* SweepData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		914A518228074EA1009951D7 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914A518128074EA1009951D7 /* Route.swift */; };
 		91874AFF2823D25A006BBEE1 /* LLPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91874AFE2823D25A006BBEE1 /* LLPath.swift */; };
+		91874B0328258D7E006BBEE1 /* ClosestDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91874B0228258D7E006BBEE1 /* ClosestDistance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		914A517828074C0A009951D7 /* SweepData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SweepData.h; sourceTree = "<group>"; };
 		914A518128074EA1009951D7 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		91874AFE2823D25A006BBEE1 /* LLPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLPath.swift; sourceTree = "<group>"; };
+		91874B0228258D7E006BBEE1 /* ClosestDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosestDistance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,12 +83,13 @@
 			children = (
 				914A517828074C0A009951D7 /* SweepData.h */,
 				91254B69280783F200044A7C /* BinaryCodable */,
-				914A518128074EA1009951D7 /* Route.swift */,
+				91874B0228258D7E006BBEE1 /* ClosestDistance.swift */,
 				91874AFE2823D25A006BBEE1 /* LLPath.swift */,
-				9112C1BA28231F1D0043A5C0 /* ParkingRegulationsMap.swift */,
 				9112C1C0282335250043A5C0 /* MetersMap.swift */,
-				91254B722807EA0800044A7C /* Types.swift */,
 				91254B742807EE1100044A7C /* MeterTypes.swift */,
+				914A518128074EA1009951D7 /* Route.swift */,
+				9112C1BA28231F1D0043A5C0 /* ParkingRegulationsMap.swift */,
+				91254B722807EA0800044A7C /* Types.swift */,
 			);
 			path = SweepData;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				9112C1C1282335250043A5C0 /* MetersMap.swift in Sources */,
 				91254B71280783F200044A7C /* BinaryDecoder.swift in Sources */,
 				91254B6F280783F200044A7C /* BinaryCodable.swift in Sources */,
+				91874B0328258D7E006BBEE1 /* ClosestDistance.swift in Sources */,
 				91254B732807EA0800044A7C /* Types.swift in Sources */,
 				91254B6E280783F200044A7C /* BinaryCodableExtensions.swift in Sources */,
 				91874AFF2823D25A006BBEE1 /* LLPath.swift in Sources */,
