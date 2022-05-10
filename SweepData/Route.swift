@@ -46,6 +46,7 @@ open class Route: BinaryCodable, Hashable {
     public let meters: Meters
     public let parkingSupplyOnBlock: Int
     public let offsetPath: [LatitudeLongitude]
+    public let highlightPoints: Route.HighlightPoints
 
     public init(
         cnn: Int,
@@ -62,7 +63,8 @@ open class Route: BinaryCodable, Hashable {
         timeLimit: [TimeLimitSchedule],
         meters: Meters,
         parkingSupplyOnBlock: Int,
-        offsetPath: [LatitudeLongitude]
+        offsetPath: [LatitudeLongitude],
+        highlightPoints: HighlightPoints
     ) {
         self.cnn = cnn
         self.rightLeft = rightLeft
@@ -79,6 +81,7 @@ open class Route: BinaryCodable, Hashable {
         self.meters = meters
         self.parkingSupplyOnBlock = parkingSupplyOnBlock
         self.offsetPath = offsetPath
+        self.highlightPoints = highlightPoints
     }
 
     open class When: BinaryCodable, Hashable {
@@ -277,6 +280,24 @@ open class Route: BinaryCodable, Hashable {
             timeLimit.hash(into: &hasher)
         }
     }
+    
+    public struct HighlightPoints: BinaryCodable {
+        public let middle: LatitudeLongitude
+        public let firstOf2: LatitudeLongitude
+        public let secondOf2: LatitudeLongitude
+        
+        public init() {
+            self.middle = LatitudeLongitude(latitude: 0, longitude: 0)
+            self.firstOf2 = LatitudeLongitude(latitude: 0, longitude: 0)
+            self.secondOf2 = LatitudeLongitude(latitude: 0, longitude: 0)
+        }
+        
+        public init(middle: LatitudeLongitude, firstOf2: LatitudeLongitude, secondOf2: LatitudeLongitude) {
+            self.middle = middle
+            self.firstOf2 = firstOf2
+            self.secondOf2 = secondOf2
+        }
+    }
 
     public func hash(into hasher: inout Hasher) {
         cnn.hash(into: &hasher)
@@ -354,7 +375,8 @@ public class MapRoute: Route {
         meters: Meters,
         parkingSupplyOnBlock: Int,
         offsetPath: [LatitudeLongitude],
-         
+        highlightPoints: Route.HighlightPoints,
+
         blockSide: CompassDirection,
         originalPath: [LatitudeLongitude],
         snappedPath: [LatitudeLongitude],
@@ -394,7 +416,8 @@ public class MapRoute: Route {
             timeLimit: timeLimit,
             meters: meters,
             parkingSupplyOnBlock: parkingSupplyOnBlock,
-            offsetPath: offsetPath)
+            offsetPath: offsetPath,
+            highlightPoints: highlightPoints)
     }
 
     enum CodingKeys: CodingKey {
