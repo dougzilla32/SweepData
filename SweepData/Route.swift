@@ -46,7 +46,7 @@ open class Route: BinaryCodable, Hashable {
     public let meters: Meters
     public let parkingSupplyOnBlock: Int
     public let offsetPath: [LatitudeLongitude]
-    public let highlightPoints: Route.HighlightPoints
+    public let indicatorPoints: Route.IndicatorPoints
 
     public init(
         cnn: Int,
@@ -64,7 +64,7 @@ open class Route: BinaryCodable, Hashable {
         meters: Meters,
         parkingSupplyOnBlock: Int,
         offsetPath: [LatitudeLongitude],
-        highlightPoints: HighlightPoints
+        indicatorPoints: IndicatorPoints
     ) {
         self.cnn = cnn
         self.rightLeft = rightLeft
@@ -81,7 +81,7 @@ open class Route: BinaryCodable, Hashable {
         self.meters = meters
         self.parkingSupplyOnBlock = parkingSupplyOnBlock
         self.offsetPath = offsetPath
-        self.highlightPoints = highlightPoints
+        self.indicatorPoints = indicatorPoints
     }
 
     open class When: BinaryCodable, Hashable {
@@ -281,7 +281,7 @@ open class Route: BinaryCodable, Hashable {
         }
     }
     
-    public struct HighlightPoints: BinaryCodable {
+    public struct IndicatorPoints: BinaryCodable {
         public let middle: LatitudeLongitude
         public let firstOf2: LatitudeLongitude
         public let secondOf2: LatitudeLongitude
@@ -375,7 +375,7 @@ public class MapRoute: Route {
         meters: Meters,
         parkingSupplyOnBlock: Int,
         offsetPath: [LatitudeLongitude],
-        highlightPoints: Route.HighlightPoints,
+        indicatorPoints: Route.IndicatorPoints,
 
         blockSide: CompassDirection,
         originalPath: [LatitudeLongitude],
@@ -417,7 +417,7 @@ public class MapRoute: Route {
             meters: meters,
             parkingSupplyOnBlock: parkingSupplyOnBlock,
             offsetPath: offsetPath,
-            highlightPoints: highlightPoints)
+            indicatorPoints: indicatorPoints)
     }
 
     enum CodingKeys: CodingKey {
