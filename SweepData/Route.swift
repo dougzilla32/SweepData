@@ -285,17 +285,23 @@ open class Route: BinaryCodable, Hashable {
         public let middle: LatitudeLongitude
         public let firstOf2: LatitudeLongitude
         public let secondOf2: LatitudeLongitude
+        public let firstOf3: LatitudeLongitude
+        public let thirdOf3: LatitudeLongitude
         
         public init() {
             self.middle = LatitudeLongitude(latitude: 0, longitude: 0)
             self.firstOf2 = LatitudeLongitude(latitude: 0, longitude: 0)
             self.secondOf2 = LatitudeLongitude(latitude: 0, longitude: 0)
+            self.firstOf3 = LatitudeLongitude(latitude: 0, longitude: 0)
+            self.thirdOf3 = LatitudeLongitude(latitude: 0, longitude: 0)
         }
         
-        public init(middle: LatitudeLongitude, firstOf2: LatitudeLongitude, secondOf2: LatitudeLongitude) {
+        public init(middle: LatitudeLongitude, firstOf2: LatitudeLongitude, secondOf2: LatitudeLongitude, firstOf3: LatitudeLongitude, thirdOf3: LatitudeLongitude) {
             self.middle = middle
             self.firstOf2 = firstOf2
             self.secondOf2 = secondOf2
+            self.firstOf3 = firstOf3
+            self.thirdOf3 = thirdOf3
         }
     }
 
