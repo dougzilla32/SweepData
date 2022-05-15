@@ -472,8 +472,16 @@ extension Substring {
 }
 
 public struct LatitudeLongitude: BinaryCodable, Hashable {
+    public static let UndefinedLatitude = 360.0
+    public static let UndefinedLongitude = 360.0
+
     public let latitude: Double
     public let longitude: Double
+    
+    public init() {
+        self.latitude = LatitudeLongitude.UndefinedLatitude
+        self.longitude = LatitudeLongitude.UndefinedLongitude
+    }
     
     public init(latitude: Double, longitude: Double) {
         self.latitude = latitude
@@ -490,6 +498,14 @@ public struct LatitudeLongitude: BinaryCodable, Hashable {
     
     public var coord: String {
         return "(lat: \(latitude) lon: \(longitude))"
+    }
+    
+    public var invalid: Bool {
+        return latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180
+    }
+
+    public var undefined: Bool {
+        return latitude == LatitudeLongitude.UndefinedLatitude && longitude == LatitudeLongitude.UndefinedLongitude
     }
 }
 
