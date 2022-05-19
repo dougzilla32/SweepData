@@ -121,7 +121,28 @@ public enum Day: Int, BinaryCodable, Comparable {
     }
 
     public static func create(from date: Date) -> Day {
-        return Day(rawValue: Calendar.current.component(.weekday, from: date))!
+        return Day(calendarWeekday: Calendar.current.component(.weekday, from: date))!
+    }
+    
+    public init?(calendarWeekday: Int) {
+        switch calendarWeekday {
+        case 1:
+            self = .sun
+        case 2:
+            self = .mon
+        case 3:
+            self = .tue
+        case 4:
+            self = .wed
+        case 5:
+            self = .thu
+        case 6:
+            self = .fri
+        case 7:
+            self = .sat
+        default:
+            return nil
+        }
     }
     
     public init?(shortString: String) {

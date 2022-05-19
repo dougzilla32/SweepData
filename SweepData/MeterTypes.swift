@@ -9,6 +9,7 @@
 import Foundation
 
 public struct Meters: BinaryCodable, Hashable {
+    // Note: using array of length 1 to store meter stats, because BinaryCodable does not play well with optional values
     private let weekdaysStats: [MeterStats]
     private let saturdayStats: [MeterStats]
     private let sundayStats: [MeterStats]
