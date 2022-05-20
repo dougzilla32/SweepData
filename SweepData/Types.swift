@@ -455,14 +455,9 @@ public struct HourAndMinute: BinaryCodable, Hashable, Comparable {
 
 extension Int {
     public var hour: HourAndMinute {
-        let hour: Int
-        if self == 24 {
-            hour = 0
-        } else {
-            hour = self
-        }
+        let hour = self
         
-        guard 0..<24 ~= hour else { fatalError() }
+        guard 0...24 ~= hour else { fatalError() }
         
         return HourAndMinute(hour: hour, minute: 0)
     }
