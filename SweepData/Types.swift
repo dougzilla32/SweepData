@@ -447,15 +447,10 @@ extension Int {
     }
 
     public var hourAndMinute: HourAndMinute {
-        let hour: Int
-        if self == 2400 {
-            hour = 0
-        } else {
-            hour = self / 100
-        }
+        let hour = self / 100
         let minute = self % 100
         
-        guard 0..<24 ~= hour, 0..<60 ~= minute else { fatalError() }
+        guard 0...24 ~= hour, 0..<60 ~= minute else { fatalError() }
         
         return HourAndMinute(hour: hour, minute: hour)
     }
