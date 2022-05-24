@@ -32,6 +32,13 @@ public func maxWithNil(_ a: Double?, _ b: Double?) -> Double {
     return max(a!, b!)
 }
 
+public func minBothNil(_ a: Double?, _ b: Double?) -> Double? {
+    if a == nil && b == nil { return nil }
+    if a == nil { return b! }
+    if b == nil { return a! }
+    return min(a!, b!)
+}
+
 extension Dictionary {
     public mutating func updateValue(forKey key: Key, closure: (Value?) -> Value?) {
         if let value = self.removeValue(forKey: key) {
