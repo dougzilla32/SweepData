@@ -412,9 +412,9 @@ public struct HourAndMinute: BinaryCodable, Hashable, Comparable {
         self.init(hour: hour, minute: minute)
     }
     
-    public init?(doubleTime: Double) {
-        let hour = Int(doubleTime)
-        let minute = Int((doubleTime - Double(hour)) * 60)
+    public init?(timeInHours: Double) {
+        let hour = Int(timeInHours)
+        let minute = Int((timeInHours - Double(hour)) * 60)
         self.init(hour: hour, minute: minute)
     }
     
