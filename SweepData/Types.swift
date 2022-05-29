@@ -438,8 +438,12 @@ public struct HourAndMinute: BinaryCodable, Hashable, Comparable {
         return hour * 100 + minute
     }
 
-    public var doubleTime: Double {
+    public var timeInHours: Double {
         return Double(hour) + Double(minute) / 60.0
+    }
+    
+    public var timeInMinutes: Int {
+        return hour * 60 + minute
     }
 
     public static func inRange(time: HourAndMinute, start: HourAndMinute, end: HourAndMinute) -> Bool {
