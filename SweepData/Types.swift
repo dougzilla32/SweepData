@@ -442,6 +442,16 @@ public struct HourAndMinute: BinaryCodable, Hashable, Comparable {
         return Double(hour) + Double(minute) / 60.0
     }
     
+    public var timeInHoursString: String {
+        let value: String
+        if minute == 0 {
+            value = String(hour)
+        } else {
+            value = String(timeInHours)
+        }
+        return value
+    }
+    
     public var timeInMinutes: Int {
         return hour * 60 + minute
     }
