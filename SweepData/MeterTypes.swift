@@ -14,6 +14,7 @@ public struct Meters: BinaryCodable, Hashable {
     private let saturdayStats: [MeterStats]
     private let sundayStats: [MeterStats]
     public let totalCount: Int
+    public let eventVenues: [EventVenue]
     
     public var weekdays: MeterStats? {
         return weekdaysStats[safe: 0]
@@ -32,9 +33,10 @@ public struct Meters: BinaryCodable, Hashable {
         self.saturdayStats = []
         self.sundayStats = []
         self.totalCount = 0
+        self.eventVenues = []
     }
     
-    public init(weekdays: MeterStats?, saturday: MeterStats?, sunday: MeterStats?, totalCount: Int) {
+    public init(weekdays: MeterStats?, saturday: MeterStats?, sunday: MeterStats?, totalCount: Int, eventVenues: [EventVenue]) {
         if let weekdays = weekdays {
             self.weekdaysStats = [weekdays]
         } else {
@@ -51,6 +53,7 @@ public struct Meters: BinaryCodable, Hashable {
             self.sundayStats = []
         }
         self.totalCount = totalCount
+        self.eventVenues = eventVenues
     }
     
     public var dayRange: (Day, Day) {
@@ -165,6 +168,10 @@ public enum MeterCapColor: Int, BinaryCodable {
     public var description: String {
         return stringValue
     }
+}
+
+public enum EventVenue: Int, BinaryCodable {
+    case chaseCenter = 0, oraclePark
 }
 
 extension Decimal: BinaryCodable { }
