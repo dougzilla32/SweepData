@@ -111,8 +111,9 @@ public struct MeterStats: BinaryCodable, Hashable {
     public let highRate: Decimal
     public let lowTimeLimit: HourAndMinute
     public let highTimeLimit: HourAndMinute
+    public let rates: [Rate]
     
-    public init(meterCount: [MeterColorAndCount], startTime: HourAndMinute, endTime: HourAndMinute, lowRate: Decimal, highRate: Decimal, lowTimeLimit: HourAndMinute, highTimeLimit: HourAndMinute) {
+    public init(meterCount: [MeterColorAndCount], startTime: HourAndMinute, endTime: HourAndMinute, lowRate: Decimal, highRate: Decimal, lowTimeLimit: HourAndMinute, highTimeLimit: HourAndMinute, rates: [Rate]) {
         self.meterCount = meterCount
         self.startTime = startTime
         self.endTime = endTime
@@ -120,8 +121,41 @@ public struct MeterStats: BinaryCodable, Hashable {
         self.highRate = highRate
         self.lowTimeLimit = lowTimeLimit
         self.highTimeLimit = highTimeLimit
+        self.rates = rates
     }
     
+    open class Rate: BinaryCodable, Hashable, Comparable {
+        public let fromTime: HourAndMinute
+        public let toTime: HourAndMinute
+        public let rate: Decimal
+
+        public init(
+            fromTime: HourAndMinute,
+            toTime: HourAndMinute,
+            rate: Decimal
+        ) {
+            self.fromTime = fromTime
+            self.toTime = toTime
+            self.rate = rate
+        }
+        
+        public static func == (lhs: Rate, rhs: Rate) -> Bool {
+            return lhs.fromTime == rhs.fromTime
+                && lhs.toTime == rhs.toTime
+                && lhs.rate == rhs.rate
+        }
+        
+        public func hash(into hasher: inout Hasher) {
+            fromTime.hash(into: &hasher)
+            toTime.hash(into: &hasher)
+            rate.hash(into: &hasher)
+        }
+        
+        public static func < (lhs: MeterStats.Rate, rhs: MeterStats.Rate) -> Bool {
+            return lhs.fromTime < rhs.fromTime
+        }
+    }
+
     public var description: String {
         var d = ""
         let mc = meterCount.sorted { mc1, mc2 in

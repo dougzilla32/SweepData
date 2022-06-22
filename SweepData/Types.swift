@@ -321,6 +321,10 @@ public struct HourAndMinute: BinaryCodable, Hashable, Comparable {
     public let hour: Int
     public let minute: Int
     
+    public var hourRoundedUp: Int {
+        return hour + (minute >= 30 ? 1 : 0)
+    }
+    
     public init(hour: Int, minute: Int) {
         self.hour = hour
         self.minute = minute
