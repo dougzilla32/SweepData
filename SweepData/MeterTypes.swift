@@ -206,6 +206,10 @@ public enum MeterCapColor: Int, BinaryCodable {
 
 public enum EventVenue: Int, BinaryCodable {
     case chaseCenter = 0, oraclePark
+    
+    public var stringValue: String {
+        return self == .chaseCenter ? "Chase Center" : "Oracle Park"
+    }
 }
 
 extension Decimal: BinaryCodable { }
