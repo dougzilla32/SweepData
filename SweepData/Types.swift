@@ -8,35 +8,30 @@
 
 import Foundation
 
-public func minWithNil(_ a: Int?, _ b: Int?) -> Int {
-    if a == nil { return b! }
-    if b == nil { return a! }
-    return min(a!, b!)
+public func minWithNil<T>(_ x: T?, _ y: T?) -> T where T : Comparable {
+    if x == nil { return y! }
+    if y == nil { return x! }
+    return min(x!, y!)
 }
 
-public func maxWithNil(_ a: Int?, _ b: Int?) -> Int {
-    if a == nil { return b! }
-    if b == nil { return a! }
-    return max(a!, b!)
+public func maxWithNil<T>(_ x: T?, _ y: T?) -> T where T : Comparable {
+    if x == nil { return y! }
+    if y == nil { return x! }
+    return max(x!, y!)
 }
 
-public func minWithNil(_ a: Double?, _ b: Double?) -> Double {
-    if a == nil { return b! }
-    if b == nil { return a! }
-    return min(a!, b!)
+public func minBothNil<T>(_ x: T?, _ y: T?) -> T? where T : Comparable {
+    if x == nil && y == nil { return nil }
+    if x == nil { return y! }
+    if y == nil { return x! }
+    return min(x!, y!)
 }
 
-public func maxWithNil(_ a: Double?, _ b: Double?) -> Double {
-    if a == nil { return b! }
-    if b == nil { return a! }
-    return max(a!, b!)
-}
-
-public func minBothNil(_ a: Double?, _ b: Double?) -> Double? {
-    if a == nil && b == nil { return nil }
-    if a == nil { return b! }
-    if b == nil { return a! }
-    return min(a!, b!)
+public func maxBothNil<T>(_ x: T?, _ y: T?) -> T? where T : Comparable {
+    if x == nil && y == nil { return nil }
+    if x == nil { return y! }
+    if y == nil { return x! }
+    return max(x!, y!)
 }
 
 extension Dictionary {
