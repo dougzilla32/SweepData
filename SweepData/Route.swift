@@ -282,21 +282,27 @@ open class Route: BinaryCodable, Hashable {
     }
     
     public struct IndicatorPoints: BinaryCodable {
-        public let middle: LatitudeLongitude
-        public let firstOf2: LatitudeLongitude
-        public let secondOf2: LatitudeLongitude
-        public let firstOf3: LatitudeLongitude
-        public let thirdOf3: LatitudeLongitude
+        public let middle: LatitudeLongitudeAngle
+        public let firstOf2: LatitudeLongitudeAngle
+        public let secondOf2: LatitudeLongitudeAngle
+        public let firstOf3: LatitudeLongitudeAngle
+        public let thirdOf3: LatitudeLongitudeAngle
         
         public init() {
-            self.middle = LatitudeLongitude()
-            self.firstOf2 = LatitudeLongitude()
-            self.secondOf2 = LatitudeLongitude()
-            self.firstOf3 = LatitudeLongitude()
-            self.thirdOf3 = LatitudeLongitude()
+            self.middle = LatitudeLongitudeAngle()
+            self.firstOf2 = LatitudeLongitudeAngle()
+            self.secondOf2 = LatitudeLongitudeAngle()
+            self.firstOf3 = LatitudeLongitudeAngle()
+            self.thirdOf3 = LatitudeLongitudeAngle()
         }
         
-        public init(middle: LatitudeLongitude, firstOf2: LatitudeLongitude, secondOf2: LatitudeLongitude, firstOf3: LatitudeLongitude, thirdOf3: LatitudeLongitude) {
+        public init(
+            middle: LatitudeLongitudeAngle,
+            firstOf2: LatitudeLongitudeAngle,
+            secondOf2: LatitudeLongitudeAngle,
+            firstOf3: LatitudeLongitudeAngle,
+            thirdOf3: LatitudeLongitudeAngle)
+        {
             self.middle = middle
             self.firstOf2 = firstOf2
             self.secondOf2 = secondOf2
