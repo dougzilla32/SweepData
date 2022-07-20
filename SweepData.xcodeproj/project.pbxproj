@@ -18,7 +18,7 @@
 		914A518228074EA1009951D7 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914A518128074EA1009951D7 /* Route.swift */; };
 		91874B0328258D7E006BBEE1 /* ClosestDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91874B0228258D7E006BBEE1 /* ClosestDistance.swift */; };
 		91874B052825D9DD006BBEE1 /* DeepDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91874B042825D9DD006BBEE1 /* DeepDescription.swift */; };
-		91DEDB8D286BEA57002350DA /* LettersAndNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DEDB8C286BEA57002350DA /* LettersAndNumbers.swift */; };
+		91DEDB8D286BEA57002350DA /* IndicatorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DEDB8C286BEA57002350DA /* IndicatorConstants.swift */; };
 		91E6F804285E03AA0057520F /* DebugPathMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E6F803285E03AA0057520F /* DebugPathMap.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,7 +35,7 @@
 		914A518128074EA1009951D7 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		91874B0228258D7E006BBEE1 /* ClosestDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosestDistance.swift; sourceTree = "<group>"; };
 		91874B042825D9DD006BBEE1 /* DeepDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepDescription.swift; sourceTree = "<group>"; };
-		91DEDB8C286BEA57002350DA /* LettersAndNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LettersAndNumbers.swift; sourceTree = "<group>"; };
+		91DEDB8C286BEA57002350DA /* IndicatorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorConstants.swift; sourceTree = "<group>"; };
 		91E6F803285E03AA0057520F /* DebugPathMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugPathMap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,7 +85,7 @@
 				91254B69280783F200044A7C /* BinaryCodable */,
 				91874B0228258D7E006BBEE1 /* ClosestDistance.swift */,
 				91874B042825D9DD006BBEE1 /* DeepDescription.swift */,
-				91DEDB8C286BEA57002350DA /* LettersAndNumbers.swift */,
+				91DEDB8C286BEA57002350DA /* IndicatorConstants.swift */,
 				91254B742807EE1100044A7C /* MeterTypes.swift */,
 				914A518128074EA1009951D7 /* Route.swift */,
 				91E6F803285E03AA0057520F /* DebugPathMap.swift */,
@@ -183,7 +183,7 @@
 				91254B6E280783F200044A7C /* BinaryCodableExtensions.swift in Sources */,
 				91254B752807EE1100044A7C /* MeterTypes.swift in Sources */,
 				91E6F804285E03AA0057520F /* DebugPathMap.swift in Sources */,
-				91DEDB8D286BEA57002350DA /* LettersAndNumbers.swift in Sources */,
+				91DEDB8D286BEA57002350DA /* IndicatorConstants.swift in Sources */,
 				91874B052825D9DD006BBEE1 /* DeepDescription.swift in Sources */,
 				91254B70280783F200044A7C /* BinaryEncoder.swift in Sources */,
 			);
