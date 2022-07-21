@@ -623,10 +623,10 @@ public struct BoundingBox: BinaryCodable, Hashable {
         }
     }
     
-    public init(latlon: [LatitudeLongitude], offset: Double) {
+    public init(latlng: [LatitudeLongitude], offset: Double) {
         self.init()
         
-        for p in latlon {
+        for p in latlng {
             minX = min(p.longitude - offset, minX)
             minY = min(p.latitude - offset, minY)
             maxX = max(p.longitude + offset, maxX)
