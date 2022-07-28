@@ -548,6 +548,12 @@ public struct LatitudeLongitudeAngle: BinaryCodable, Hashable  {
         self.longitude = longitude
         self.angle = angle
     }
+    
+    public init(latlng: LatitudeLongitude, angle: Double) {
+        self.latitude = latlng.latitude
+        self.longitude = latlng.longitude
+        self.angle = angle
+    }
 
     public var undefined: Bool {
         return latitude == LatitudeLongitudeAngle.UndefinedLatitude && longitude == LatitudeLongitudeAngle.UndefinedLongitude
