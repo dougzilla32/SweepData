@@ -46,6 +46,7 @@ open class Route: BinaryCodable, Hashable {
     public let meters: Meters
     public let parkingSupplyOnBlock: Int
     public let offsetPath: [LatitudeLongitude]
+    public let pathMaxAngle: Double
     public let indicatorPoints: Route.IndicatorPoints
 
     public init(
@@ -64,6 +65,7 @@ open class Route: BinaryCodable, Hashable {
         meters: Meters,
         parkingSupplyOnBlock: Int,
         offsetPath: [LatitudeLongitude],
+        pathMaxAngle: Double,
         indicatorPoints: IndicatorPoints
     ) {
         self.cnn = cnn
@@ -81,6 +83,7 @@ open class Route: BinaryCodable, Hashable {
         self.meters = meters
         self.parkingSupplyOnBlock = parkingSupplyOnBlock
         self.offsetPath = offsetPath
+        self.pathMaxAngle = pathMaxAngle
         self.indicatorPoints = indicatorPoints
     }
 
@@ -387,6 +390,7 @@ public class MapRoute: Route {
         meters: Meters,
         parkingSupplyOnBlock: Int,
         offsetPath: [LatitudeLongitude],
+        pathMaxAngle: Double,
         indicatorPoints: Route.IndicatorPoints,
 
         blockSide: CompassDirection,
@@ -429,6 +433,7 @@ public class MapRoute: Route {
             meters: meters,
             parkingSupplyOnBlock: parkingSupplyOnBlock,
             offsetPath: offsetPath,
+            pathMaxAngle: pathMaxAngle,
             indicatorPoints: indicatorPoints)
     }
 
