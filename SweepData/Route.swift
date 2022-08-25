@@ -35,10 +35,8 @@ open class Route: BinaryCodable, Hashable {
     public let rightLeft: RightLeft
     public let streetName: String
     public let neighborhood: String
-    public let left_fromAddress: Int
-    public let left_toAddress: Int
-    public let right_fromAddress: Int
-    public let right_toAddress: Int
+    public let fromAddress: Int
+    public let toAddress: Int
     public let zipCode: Int
     public let sweep: [SweepSchedule]
     public let towAway: [TowAwaySchedule]
@@ -54,10 +52,8 @@ open class Route: BinaryCodable, Hashable {
         rightLeft: RightLeft,
         streetName: String,
         neighborhood: String,
-        left_fromAddress: Int,
-        left_toAddress: Int,
-        right_fromAddress: Int,
-        right_toAddress: Int,
+        fromAddress: Int,
+        toAddress: Int,
         zipCode: Int,
         sweep: [SweepSchedule],
         towAway: [TowAwaySchedule],
@@ -72,10 +68,8 @@ open class Route: BinaryCodable, Hashable {
         self.rightLeft = rightLeft
         self.streetName = streetName
         self.neighborhood = neighborhood
-        self.left_fromAddress = left_fromAddress
-        self.left_toAddress = left_toAddress
-        self.right_fromAddress = right_fromAddress
-        self.right_toAddress = right_toAddress
+        self.fromAddress = fromAddress
+        self.toAddress = toAddress
         self.zipCode = zipCode
         self.sweep = sweep
         self.towAway = towAway
@@ -319,10 +313,8 @@ open class Route: BinaryCodable, Hashable {
         rightLeft.hash(into: &hasher)
         streetName.hash(into: &hasher)
         neighborhood.hash(into: &hasher)
-        left_fromAddress.hash(into: &hasher)
-        left_toAddress.hash(into: &hasher)
-        right_fromAddress.hash(into: &hasher)
-        right_toAddress.hash(into: &hasher)
+        fromAddress.hash(into: &hasher)
+        toAddress.hash(into: &hasher)
         zipCode.hash(into: &hasher)
         sweep.hash(into: &hasher)
         towAway.hash(into: &hasher)
@@ -336,10 +328,8 @@ open class Route: BinaryCodable, Hashable {
             && lhs.rightLeft == rhs.rightLeft
             && lhs.streetName == rhs.streetName
             && lhs.neighborhood == rhs.neighborhood
-            && lhs.left_fromAddress == rhs.left_fromAddress
-            && lhs.left_toAddress == rhs.left_toAddress
-            && lhs.right_fromAddress == rhs.right_fromAddress
-            && lhs.right_toAddress == rhs.right_toAddress
+            && lhs.fromAddress == rhs.fromAddress
+            && lhs.toAddress == rhs.toAddress
             && lhs.zipCode == rhs.zipCode
             && lhs.sweep == rhs.sweep
             && lhs.towAway == rhs.towAway
@@ -349,11 +339,11 @@ open class Route: BinaryCodable, Hashable {
     }
 
     public var shortName: String {
-        return "\(streetName): left \(left_fromAddress) to \(left_toAddress), right \(right_fromAddress) to \(right_toAddress) ; \(rightLeft)"
+        return "\(streetName): \(fromAddress) to \(toAddress) ; \(rightLeft)"
     }
 
     public var summary: String {
-        return "\(cnn) \(rightLeft) \(streetName) \(left_fromAddress) \(left_toAddress) \(right_fromAddress) \(right_toAddress) \(zipCode) \(meters)"
+        return "\(cnn) \(rightLeft) \(streetName) \(fromAddress) \(toAddress) \(zipCode) \(meters)"
     }
 }
 
@@ -379,10 +369,8 @@ public class MapRoute: Route {
         rightLeft: RightLeft,
         streetName: String,
         neighborhood: String,
-        left_fromAddress: Int,
-        left_toAddress: Int,
-        right_fromAddress: Int,
-        right_toAddress: Int,
+        fromAddress: Int,
+        toAddress: Int,
         zipCode: Int,
         sweep: [SweepSchedule],
         towAway: [TowAwaySchedule],
@@ -422,10 +410,8 @@ public class MapRoute: Route {
             rightLeft: rightLeft,
             streetName: streetName,
             neighborhood: neighborhood,
-            left_fromAddress: left_fromAddress,
-            left_toAddress: left_toAddress,
-            right_fromAddress: right_fromAddress,
-            right_toAddress: right_toAddress,
+            fromAddress: fromAddress,
+            toAddress: toAddress,
             zipCode: zipCode,
             sweep: sweep,
             towAway: towAway,
