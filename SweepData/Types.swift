@@ -56,13 +56,24 @@ public enum RightLeft: Int, BinaryCodable {
 
     public static let stringValues = [ "R", "L" ]
 
+    public static let fullStringValues = [ "Right", "Left" ]
+
     public init?(string: String) {
         guard let index = RightLeft.stringValues.firstIndex(of: string) else { return nil }
         self.init(rawValue: index)
     }
     
+    public init?(fullString: String) {
+        guard let index = RightLeft.fullStringValues.firstIndex(of: fullString) else { return nil }
+        self.init(rawValue: index)
+    }
+    
     public var stringValue: String {
         return RightLeft.stringValues[rawValue]
+    }
+    
+    public var fullStringValue: String {
+        return RightLeft.fullStringValues[rawValue]
     }
 }
 
