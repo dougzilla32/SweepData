@@ -20,13 +20,14 @@ open class BroadPhaseGrid<T> {
     }
 
     // Return a square of grid tiles that overlap the given bounding box, where maxX and maxY are non-inclusive (use ..< not ...)
-    public func intersectionOf(boundingBox: BoundingBox) -> (minX: Int, minY: Int, maxX: Int, maxY: Int) {
+    public func intersectionOf(boundingBox: BoundingBox, withPadding padding: Double? = nil) -> (minX: Int, minY: Int, maxX: Int, maxY: Int) {
         let OverlapOffset = 0.000000000000001
+        let p = padding ?? 0.0
         return (
-            minX: max(0, min(size, Int((boundingBox.minX - box.minX) * sizeD / (box.maxX - box.minX)))),
-            minY: max(0, min(size, Int((boundingBox.minY - box.minY) * sizeD / (box.maxY - box.minY)))),
-            maxX: max(0, min(size, Int((boundingBox.maxX - box.minX - OverlapOffset) * sizeD / (box.maxX - box.minX)) + 1)),
-            maxY: max(0, min(size, Int((boundingBox.maxY - box.minY - OverlapOffset) * sizeD / (box.maxY - box.minY)) + 1)))
+            minX: max(0, min(size, Int((boundingBox.minX - p - box.minX) * sizeD / (box.maxX - box.minX)))),
+            minY: max(0, min(size, Int((boundingBox.minY - p - box.minY) * sizeD / (box.maxY - box.minY)))),
+            maxX: max(0, min(size, Int((boundingBox.maxX + p - box.minX - OverlapOffset) * sizeD / (box.maxX - box.minX)) + 1)),
+            maxY: max(0, min(size, Int((boundingBox.maxY + p - box.minY - OverlapOffset) * sizeD / (box.maxY - box.minY)) + 1)))
     }
 }
 
