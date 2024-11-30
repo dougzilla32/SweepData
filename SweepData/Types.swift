@@ -385,10 +385,10 @@ public struct HourAndMinute: BinaryCodable, Hashable, Comparable {
         guard components.count == 2 else {
             return nil
         }
-        guard let hour = Int(String(components[0])), 0..<24 ~= hour else {
+        guard let minute = Int(String(components[1])), 0..<60 ~= minute else {
             return nil
         }
-        guard let minute = Int(String(components[1])), 0..<60 ~= minute else {
+        guard let hour = Int(String(components[0])), 0..<24 ~= hour || hour == 24 && minute == 0 else {
             return nil
         }
         self.init(hour: hour, minute: minute)
@@ -442,6 +442,10 @@ public struct HourAndMinute: BinaryCodable, Hashable, Comparable {
         s.append(hour <= 11 ? "am" : "pm")
         
         return s
+    }
+
+    public var militaryTime: String {
+        return String(format: "%d:%02d", hour, minute)
     }
 
     public var integerTime: Int {
@@ -527,8 +531,22 @@ public struct LatitudeLongitude: BinaryCodable, Hashable {
         self.longitude = -x
     }
     
+    public init?(string: String) {
+        let parts = string.split(separator: " ")
+        guard parts.count == 2, let latitude = Double(parts[1]), let longitude = Double(parts[0]) else {
+            return nil
+        }
+        
+        self.latitude = latitude
+        self.longitude = longitude
+    }
+    
     public var x: Double { return -longitude }
     public var y: Double { return latitude }
+    
+    public var stringValue: String {
+        return "\(longitude) \(latitude)"
+    }
     
     public var coord: String {
         return "(lat: \(latitude) lon: \(longitude))"
