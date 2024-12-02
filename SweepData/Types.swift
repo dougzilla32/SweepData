@@ -702,3 +702,7 @@ extension Collection {
         return indices.contains(index) ? self[index] : nil
     }
 }
+
+struct MyNewType {
+    let hi = "hi"
+}
