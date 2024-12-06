@@ -463,3 +463,49 @@ public class MapRoute: Route {
         try super.init(from: decoder)
     }
 }
+
+extension Route.When: Comparable {
+    public static func < (lhs: Route.When, rhs: Route.When) -> Bool {
+        if lhs.day.rawValue < rhs.day.rawValue { return true }
+        if lhs.day.rawValue > rhs.day.rawValue { return false }
+        if lhs.fromTime < rhs.fromTime { return true }
+        if lhs.fromTime > rhs.fromTime { return false }
+        if lhs.toTime < rhs.toTime { return true }
+        if lhs.toTime > rhs.toTime { return false }
+        return lhs.row < rhs.row
+    }
+}
+
+extension Route.SweepSchedule {
+    public static func < (lhs: Route.SweepSchedule, rhs: Route.SweepSchedule) -> Bool {
+        if (lhs as Route.When) < (rhs as Route.When) { return true }
+        if (lhs as Route.When) > (rhs as Route.When) { return false }
+        if !lhs.holidays && rhs.holidays { return true }
+        if lhs.holidays && !rhs.holidays { return false }
+        if !lhs.week1 && rhs.week1 { return true }
+        if lhs.week1 && !rhs.week1 { return false }
+        if !lhs.week2 && rhs.week2 { return true }
+        if lhs.week2 && !rhs.week2 { return false }
+        if !lhs.week3 && rhs.week3 { return true }
+        if lhs.week3 && !rhs.week3 { return false }
+        if !lhs.week4 && rhs.week4 { return true }
+        if lhs.week4 && !rhs.week4 { return false }
+        return !lhs.week5 && rhs.week5
+    }
+}
+
+extension Route.TowAwaySchedule  {
+    public static func < (lhs: Route.TowAwaySchedule, rhs: Route.TowAwaySchedule) -> Bool {
+        if (lhs as Route.When) < (rhs as Route.When) { return true }
+        if (lhs as Route.When) > (rhs as Route.When) { return false }
+        return !lhs.holidays && rhs.holidays
+    }
+}
+
+extension Route.TimeLimitSchedule  {
+    public static func < (lhs: Route.TimeLimitSchedule, rhs: Route.TimeLimitSchedule) -> Bool {
+        if (lhs as Route.When) < (rhs as Route.When) { return true }
+        if (lhs as Route.When) > (rhs as Route.When) { return false }
+        return lhs.timeLimit < rhs.timeLimit
+    }
+}
