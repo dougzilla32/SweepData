@@ -51,25 +51,37 @@ extension Dictionary {
 
 extension Date: BinaryCodable { }
 
-public enum RightLeft: Int, BinaryCodable {
+public protocol StringEnum {
+    static var stringValues: [String] { get }
+    init?(rawValue: Int)
+    var rawValue: Int { get }
+}
+
+extension StringEnum {
+    public init?(string: String) {
+        guard let index = Self.stringValues.firstIndex(of: string) else { return nil }
+        self.init(rawValue: index)
+    }
+
+    public var stringValue: String {
+        return Self.stringValues[rawValue]
+    }
+    
+    public var description: String {
+        return stringValue
+    }
+}
+
+public enum RightLeft: Int, BinaryCodable, StringEnum {
     case right = 0, left
 
     public static let stringValues = [ "R", "L" ]
 
     public static let fullStringValues = [ "Right", "Left" ]
 
-    public init?(string: String) {
-        guard let index = RightLeft.stringValues.firstIndex(of: string) else { return nil }
-        self.init(rawValue: index)
-    }
-    
     public init?(fullString: String) {
         guard let index = RightLeft.fullStringValues.firstIndex(of: fullString) else { return nil }
         self.init(rawValue: index)
-    }
-    
-    public var stringValue: String {
-        return RightLeft.stringValues[rawValue]
     }
     
     public var fullStringValue: String {
@@ -77,23 +89,19 @@ public enum RightLeft: Int, BinaryCodable {
     }
 }
 
-public enum CompassDirection: Int, BinaryCodable {
+public enum CompassDirection: Int, BinaryCodable, StringEnum {
     case north = 0, south, east, west, northWest, northEast, southWest, southEast, none
 
     public static let stringValues = [ "North", "South", "East", "West", "NorthWest", "NorthEast", "SouthWest", "SouthEast", "None" ]
     
     public init?(string: String) {
-        if string == "" {
+        if string.isEmpty {
             self = .none
         }
         else {
             guard let index = CompassDirection.stringValues.firstIndex(of: string) else { return nil }
             self.init(rawValue: index)
         }
-    }
-    
-    public var stringValue: String {
-        return CompassDirection.stringValues[rawValue]
     }
 }
 
@@ -257,7 +265,7 @@ extension Array where Element == Day {
     }
 }
 
-public enum DayOrEvent: Int, BinaryCodable, Comparable {
+public enum DayOrEvent: Int, BinaryCodable, Comparable, StringEnum {
     case mon = 1, tues, wed, thu, fri, sat, sun,
     giantsDay, giantsNight, postedEvents, postedServices, schoolDays, businessHours, performance
 

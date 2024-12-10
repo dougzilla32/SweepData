@@ -185,31 +185,16 @@ public struct MeterColorAndCount: BinaryCodable, Hashable {
     }
 }
 
-public enum MeterCapColor: Int, BinaryCodable {
+public enum MeterCapColor: Int, BinaryCodable, StringEnum {
     case none = 0, undefined, bTimeBandn, grey, brown, purple, green, white, black, yellow, red, blue, orange
 
-    public init?(string: String) {
-        guard let index = MeterCapColor.stringValues.firstIndex(of: string) else { return nil }
-        self.init(rawValue: index)
-    }
-    
     public static let stringValues = [ "-", "Undefined", "BTimeBandn", "Grey", "Brown", "Purple", "Green", "White", "Black", "Yellow", "Red", "Blue", "Orange" ]
-    
-    public var stringValue: String {
-        return MeterCapColor.stringValues[rawValue]
-    }
-
-    public var description: String {
-        return stringValue
-    }
 }
 
-public enum EventVenue: Int, BinaryCodable {
+public enum EventVenue: Int, BinaryCodable, StringEnum {
     case chaseCenter = 0, oraclePark
     
-    public var stringValue: String {
-        return self == .chaseCenter ? "Chase Center" : "Oracle Park"
-    }
+    public static let stringValues = [ "Chase Center", "Oracle Park" ]
 }
 
 extension Decimal: BinaryCodable { }
