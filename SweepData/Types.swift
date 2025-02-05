@@ -51,13 +51,11 @@ extension Dictionary {
 
 extension Date: BinaryCodable { }
 
-public protocol StringEnum {
+public protocol IntEnum: RawRepresentable where RawValue == Int {
     static var stringValues: [String] { get }
-    init?(rawValue: Int)
-    var rawValue: Int { get }
 }
 
-extension StringEnum {
+extension IntEnum {
     public init?(string: String) {
         guard let index = Self.stringValues.firstIndex(of: string) else { return nil }
         self.init(rawValue: index)
@@ -72,7 +70,7 @@ extension StringEnum {
     }
 }
 
-public enum RightLeft: Int, BinaryCodable, StringEnum {
+public enum RightLeft: Int, IntEnum, BinaryCodable {
     case right = 0, left
 
     public static let stringValues = [ "R", "L" ]
@@ -89,7 +87,7 @@ public enum RightLeft: Int, BinaryCodable, StringEnum {
     }
 }
 
-public enum CompassDirection: Int, BinaryCodable, StringEnum {
+public enum CompassDirection: Int, IntEnum, BinaryCodable {
     case north = 0, south, east, west, northWest, northEast, southWest, southEast, none
 
     public static let stringValues = [ "North", "South", "East", "West", "NorthWest", "NorthEast", "SouthWest", "SouthEast", "None" ]
@@ -265,7 +263,7 @@ extension Array where Element == Day {
     }
 }
 
-public enum DayOrEvent: Int, BinaryCodable, Comparable, StringEnum {
+public enum DayOrEvent: Int, IntEnum, BinaryCodable, Comparable {
     case mon = 1, tues, wed, thu, fri, sat, sun,
     giantsDay, giantsNight, postedEvents, postedServices, schoolDays, businessHours, performance
 

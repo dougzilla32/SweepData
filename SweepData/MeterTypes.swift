@@ -185,13 +185,13 @@ public struct MeterColorAndCount: BinaryCodable, Hashable {
     }
 }
 
-public enum MeterCapColor: Int, BinaryCodable, StringEnum {
+public enum MeterCapColor: Int, IntEnum, BinaryCodable {
     case none = 0, undefined, bTimeBandn, grey, brown, purple, green, white, black, yellow, red, blue, orange
 
     public static let stringValues = [ "-", "Undefined", "BTimeBandn", "Grey", "Brown", "Purple", "Green", "White", "Black", "Yellow", "Red", "Blue", "Orange" ]
 }
 
-public enum EventVenue: Int, BinaryCodable, StringEnum {
+public enum EventVenue: Int, BinaryCodable {
     case chaseCenter = 0, oraclePark
     
     public static let stringValues = [ "Chase Center", "Oracle Park" ]
