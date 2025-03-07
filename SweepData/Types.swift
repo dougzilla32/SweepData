@@ -221,47 +221,47 @@ public enum Day: Int, BinaryCodable, Comparable {
     }
 }
 
-extension Array where Element == Day {
-    // Returns a string with one the following formats, for example:
-    //      Su
-    //      M,Th
-    //      M-F
-    //      M-Sa
-    //      M-Su
-    //      M,W,Th,F,Sa
-    public var superAbbrevStringValue: String {
-        var s = ""
-        let contiguous: Bool
-
-        let days = self.sorted()
-        if days.count >= 3 {
-            var prev = -1
-            var cont = true
-            for d in days {
-                if prev != -1 && prev != d.rawValue - 1 {
-                    cont = false
-                    break
-                }
-                prev = d.rawValue
-            }
-            contiguous = cont
-        } else {
-            contiguous = false
-        }
-        
-        if contiguous {
-            s = "\(days.first!.superAbbrevStringValue)-\(days.last!.superAbbrevStringValue)"
-        } else {
-            for d in days {
-                if s.count > 0 {
-                    s.append(",")
-                }
-                s.append(d.superAbbrevStringValue)
-            }
-        }
-        return s
-    }
-}
+//extension Array where Element == Day {
+//    // Returns a string with one the following formats, for example:
+//    //      Su
+//    //      M,Th
+//    //      M-F
+//    //      M-Sa
+//    //      M-Su
+//    //      M,W,Th,F,Sa
+//    public var superAbbrevStringValue: String {
+//        var s = ""
+//        let contiguous: Bool
+//
+//        let days = self.sorted()
+//        if days.count >= 3 {
+//            var prev = -1
+//            var cont = true
+//            for d in days {
+//                if prev != -1 && prev != d.rawValue - 1 {
+//                    cont = false
+//                    break
+//                }
+//                prev = d.rawValue
+//            }
+//            contiguous = cont
+//        } else {
+//            contiguous = false
+//        }
+//        
+//        if contiguous {
+//            s = "\(days.first!.superAbbrevStringValue)-\(days.last!.superAbbrevStringValue)"
+//        } else {
+//            for d in days {
+//                if s.count > 0 {
+//                    s.append(",")
+//                }
+//                s.append(d.superAbbrevStringValue)
+//            }
+//        }
+//        return s
+//    }
+//}
 
 public enum DayOrEvent: Int, IntEnum, BinaryCodable, Comparable {
     case mon = 1, tues, wed, thu, fri, sat, sun,
@@ -538,7 +538,7 @@ public struct LatitudeLongitude: BinaryCodable, Hashable {
     }
     
     public init?(string: String) {
-        let parts = string.split(separator: " ")
+        let parts = string.split(whereSeparator: { $0.isWhitespace })
         guard parts.count == 2, let latitude = Double(parts[1]), let longitude = Double(parts[0]) else {
             return nil
         }
