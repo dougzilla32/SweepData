@@ -192,9 +192,9 @@ public enum MeterCapColor: Int, IntEnum, BinaryCodable {
 }
 
 public enum EventVenue: Int, BinaryCodable {
-    case chaseCenter = 0, oraclePark
+    case arena = 0, ballpark
     
-    public static let stringValues = [ "Chase Center", "Oracle Park" ]
+    public static let stringValues = [ "Arena", "Ballpark" ]
 }
 
 extension Decimal: BinaryCodable { }
