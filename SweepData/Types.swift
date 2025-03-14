@@ -419,9 +419,9 @@ public struct HourAndMinute: BinaryCodable, Hashable, Comparable {
         self.init(hour: hour, minute: minute)
     }
     
-    public init?(integerTime: Int) {
-        let hour = integerTime / 100
-        let minute = integerTime % 100
+    public init?(intTime: Int) {
+        let hour = intTime / 100
+        let minute = intTime % 100
         guard minute < 60 else {
             return nil
         }
@@ -454,7 +454,7 @@ public struct HourAndMinute: BinaryCodable, Hashable, Comparable {
         return String(format: "%d:%02d", hour, minute)
     }
 
-    public var integerTime: Int {
+    public var intTime: Int {
         return hour * 100 + minute
     }
 
