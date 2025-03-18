@@ -6,6 +6,8 @@
 //  Copyright © 2019 Doug. All rights reserved.
 //
 
+import Foundation
+
 public class ClosestDistance {
     /* Distance from a point (p1) to line l1 l2 */
     public static func distanceFromPoint(_ p: LatitudeLongitude, toLineSegment l1: LatitudeLongitude, and l2: LatitudeLongitude) -> (distance: Double, point: LatitudeLongitude) {

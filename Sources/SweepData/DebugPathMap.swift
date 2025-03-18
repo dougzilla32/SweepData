@@ -5,6 +5,8 @@
 //  Created by Doug on 6/18/22.
 //
 
+import Foundation
+
 public struct DebugPathMap: BinaryCodable {
     public let date: Date
     public let paths: [DebugPath]
